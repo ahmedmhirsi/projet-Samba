@@ -1,0 +1,42 @@
+#cloud-config
+autoinstall:
+  # version is an Autoinstall required field.
+  version: 1
+  apt:
+    fallback: offline-install
+  locale: en_US
+  keyboard:
+    layout: us
+  shutdown: reboot
+  storage:
+    layout:
+      name: direct
+    swap:
+      size: 0
+
+
+  identity:
+    hostname: 'srv-samba'
+    username: 'ahmed'
+    realname: 'ahmed'
+    password: '$6$bmm7Y.ULABKm4J0U$Doe01Kep4nW9xJHp4x8sIDNm0R3RILt6BJ9cIF9mA9Nwvi6hotLeiRgAouNbZjT3mSsv.dS9JQ5sWmFKKGrBn/'
+# todo. maybe we need to handle group stuff as late command, as well. to be tested
+# 
+
+  user-data:
+
+    timezone: Etc/UTC
+
+    ntp:
+
+
+      enabled: true
+
+
+  # Custom Commands.
+  late-commands:
+
+
+    - cp /cdrom/vboxpostinstall.sh /target/root/vboxpostinstall.sh
+    - chmod +x /target/root/vboxpostinstall.sh
+    - curtin in-target --target=/target -- /bin/bash /root/vboxpostinstall.sh --direct
