@@ -1,0 +1,8 @@
+﻿server19/
+srv-samba/
+*.vdi
+*.vbox
+*.vbox-prev
+*.log
+*.log.*
+*.viso

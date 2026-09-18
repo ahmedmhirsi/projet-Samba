@@ -1,0 +1,124 @@
+### 1. Réseau
+
+```bash
+ping -c 4 172.16.2.209
+```
+
+### 2. DNS domaine
+
+```bash
+nslookup rs.local 172.16.2.209
+```
+
+### 3. DNS contrôleur de domaine
+
+```bash
+nslookup dc.rs.local 172.16.2.209
+```
+
+### 4. Nom du serveur
+
+```bash
+hostname
+```
+
+### 5. FQDN
+
+```bash
+hostname -f
+```
+
+### 6. Ticket Kerberos
+
+```bash
+kinit administrator@RS.LOCAL
+```
+
+### 7. Vérifier le ticket Kerberos
+
+```bash
+klist
+```
+
+### 8. Vérifier le Join AD
+
+```bash
+net ads testjoin
+```
+
+### 9. Informations du domaine
+
+```bash
+net ads info
+```
+
+### 10. Utilisateurs AD
+
+```bash
+wbinfo -u
+```
+
+### 11. Groupes AD
+
+```bash
+wbinfo -g
+```
+
+### 12. Utilisateurs Linux + AD
+
+```bash
+getent passwd
+```
+
+### 13. Groupes Linux + AD
+
+```bash
+getent group
+```
+
+### 14. Vérifier configuration Samba
+
+```bash
+testparm
+```
+
+### 15. Vérifier les quotas
+
+```bash
+quota -s
+```
+
+### 16. Vérifier tous les quotas
+
+```bash
+sudo repquota -a
+```
+
+### 17. Tester les partages depuis Windows
+
+```text
+\\172.16.2.210\
+```
+
+### 18. Tester un partage précis depuis Windows
+
+```text
+\\172.16.2.210\NomDuPartage
+```
+
+### 19. Tester avec le nom du serveur
+
+```text
+\\srv-samba\
+```
+
+### 20. Vérification rapide finale
+
+```bash
+ping -c 2 172.16.2.209
+klist
+net ads testjoin
+wbinfo -u
+wbinfo -g
+testparm
+```
